@@ -19,14 +19,3 @@ install.packages("devtools")
 library(devtools)
 devtools::install_github("yijutseng/DataAnalyticsWithRBook")
 ```
-
-本書為[長庚大學資訊管理學系](http://im.cgu.edu.tw/bin/home.php) [大數據分析方法](https://github.com/yijutseng/BigDataCGUIM)課程教學參考書籍
-
-歡迎提供[建議與回饋](https://goo.gl/forms/5Htobvwy2vsB7yiF3)，也可透過[GitHub issues](https://github.com/yijutseng/DataAnalyticsWithRBook/issues)或是直接Fork修改有誤的地方。
-
-
-
-
-本書使用[bookdown](https://bookdown.org/) package建置而成。
-
-
