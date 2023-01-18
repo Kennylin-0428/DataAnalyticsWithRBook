@@ -1,0 +1,256 @@
+# R語言101 {#intro}
+
+本章節介紹學習R語言的基本知識，包括基本指令操作、運算子介紹等。
+
+## 什麼是R語言
+
+[R語言](http://www.r-project.org/){target="_blank"}是一種自由軟體程式語言，主要用於資料分析與統計運算，2000年時終於發表R 1.0.0，有關R語言的發展歷史可參考[維基百科](https://zh.wikipedia.org/wiki/R%E8%AF%AD%E8%A8%80){target="_blank"}。基本的R軟體已經內建多種統計及分析功能，其餘功能可以透過安裝**套件（Packages）**加載，眾多的套件使R的使用者可以【站在巨人的肩膀上(Standing on the shoulders of
+giants (Hal R. Varian, Google))】做資料分析，截至2017年1月為止，R軟體可另外安裝的套件數目共有10,000個以上 ([R Studio報導](https://www.rstudio.com/rviews/2017/01/06/10000-cran-packages/){target="_blank"})。常用的套件清單可參考各項網路資訊，如[R Studio的整理：Quick list of useful R packages](https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages){target="_blank"}
+
+安裝套件Package的方法如下：
+```{r eval=F}
+install.packages("套件名稱")
+```
+
+值得注意的是，套件名稱需要加上雙引號，舉例來說，若要安裝`ggplot2`套件，則要在R的Console視窗內輸入：
+```{r eval=F}
+install.packages("ggplot2")
+```
+
+若要載入**已安裝**的套件，則輸入`library(套件名稱)`，範例：
+```{r eval=F}
+library(ggplot2)
+```
+載入已安裝的套件時，可以**不用**在套件名稱前後加雙引號，但也可以加 （[參考資料](http://stackoverflow.com/questions/25210455/how-can-library-accept-both-quoted-and-unquoted-strings){target="_blank"}）。
+
+## 函數使用
+在R中有許多內建函數，安裝套件後各套件也會提供各式各樣寫好的函數，函數使用方式為`函數名稱(參數1,參數2,....)`，以計算平均數為例，可使用`mean()`函數，範例如下:
+
+```{r}
+mean(c(1,2,3,4,5,6)) ##計算1~6的平均數
+```
+
+若想知道各函數所需參數，可使用`?函數名稱`觀看函數作者所撰寫的說明文件
+```{r eval=F}
+?mean
+```
+
+除非有指定參數名稱，函數的參數設定有順序性，如序列產生函數`seq()`，參數順序為`from, to, by`，代表序列起點、序列終點，以及相隔單位。
+```{r}
+seq(from=1,to=9,by=2)#1~9，每隔2產生一數字
+seq(1,9,2)#按照順序輸入參數，可省去參數名稱
+seq(by=2,to=9,from=1)#若不想照順序輸入參數，需要指定參數名稱
+```
+
+## 變數設定
+
+在開始深入學習R語言之前，首要任務是學習最基本的R程式碼：**變數設定**，在R語言中，主要使用`<-`設定變數，設定方法為：**變數名稱**`<-`**變數內容(值)**，雖然**變數名稱**可依箭頭方向放置於左側`<-`或右側`->`，但為方便閱讀，**變數名稱**多放置於左側。
+
+```{r first}
+a<-1 
+2->b
+a
+b
+```
+
+R語言也接受使用`=`設定變數，此時**變數名稱**必須在左側，如：**變數名稱**`=`**變數內容**
+
+```{r first2}
+c=1 
+c
+```
+
+除了**變數設定**外，`str()`函數也為常用基本函數，`str()`用在檢查與總覽各類變數型態。
+
+```{r first3}
+d<-3
+str(d)
+```
+
+變數的命名有以下規則:
+
+- 不可使用保留字，如break, else, FALSE, for, function, if, Inf, NA, NaN,
+next, repeat, return, TRUE, while等
+- 開頭只能是英文字，或 `.`
+- 大小寫敏感
+
+## 執行視窗
+R是可直譯的語言，也就是說，可以在執行視窗(Console)直接打程式碼，在視窗出現`>`時，表示可輸入指令，若視窗出現`+`時，表示前面的程式碼還沒打完，必須鍵入完整的程式碼讓R執行。
+
+## 資料型態 {#DataType}
+在R語言中，常用的資料型態包括**數值 (numeric)**、**字串 (character)**、**布林變數 (logic)**以及**日期 (Date)**等。
+
+### 數值 numeric
+
+數值包括整數（沒有小數點）與浮點數（有小數點）的數值
+
+```{r num1}
+num1<-100 
+num2<-1000.001
+```
+
+值得注意的是，若數值長度超過 `2^53`，必須導入`bit64` package [@R-bit64]，將數值長度上限提高為`2^63`，才能表示完整數值
+```{r bit64, message=F}
+print(2^53, digits=20) 
+print(2^53+1, digits=20) # +1後，數值仍與2^53相同
+library(bit64) # 導入bit64 package
+print(as.integer64(2)^53, digits=20)
+print(as.integer64(2)^53+1, digits=20)# 導入bit64後，可得正確答案
+```
+
+
+### 字串 character
+用雙引號`"`框起的文字會被儲存為字串格式，若在數字前後加上雙引號，數字也會被儲存為文字形式，無法進行數值的加減乘除等運算。
+```{r char1}
+char1<-"abcTest" 
+char2<-"100"
+char3<-"200"
+#char2+char3 #會輸出Error message: non-numeric argument to binary operator
+```
+
+### 布林變數 logic
+用於邏輯判斷，可使用大寫**TRUE**或**T**代表**真**，大寫**FALSE**或**F**代表假。
+```{r bool1}
+boolT<-TRUE
+boolT1<-T
+boolF<-FALSE
+boolF1<-F
+```
+
+### 日期 (Date)
+用於表示日期，於資料分析中常用，使用`Sys.Date()`指令可得系統日期。
+
+```{r date1}
+dateBook<-Sys.Date()
+dateBook
+
+```
+
+日期與字串的相關轉換操作可考慮使用簡單易懂的`lubridate`[@R-lubridate] package，如果想要將`年/月/日`格式的文字轉換為日期物件，可使用`ymd()`函數（y表年year，m表月month，d表日day），如果想要將`月/日/年`格式的文字轉換為日期物件，則使用`mdy()`函數，以此類推。
+
+```{r date2,message=F}
+library(lubridate)
+ymd('2012/3/3')
+mdy('3/3/2012')
+```
+
+其他使用方式可參考 [The Yhat Blog](http://blog.yhat.com/static/pdf/R_date_cheat_sheet.pdf){target="_blank"}。
+
+## 基本運算子
+
+### 數學基本運算
+在R中，數學運算與其他程式語言相同
+
+- 加 `+`
+- 減 `-`
+- 乘 `*`
+- 除 `/`
+- 餘數 `%%`
+- 次方 `^`
+
+```{r math1}
+num1<-1
+num2<-100
+num1+num2
+num1-num2
+num1*num2
+num1/num2
+100%%3 ##100除以3後所得餘數
+2^3 ##2的3次方
+```
+
+###進階數學函數
+- 四捨五入 `round()`
+- 無條件捨去 `floor()`
+- 無條件進位 `ceiling()`
+
+```{r math2}
+num1<-1.568
+num2<-2.121
+round(num2,digits = 1) #2.121四捨五入至小數點第一位
+floor(num1) ##1.568
+ceiling(num2) ##2.121
+```
+
+### 邏輯運算
+常用之邏輯判斷也可在R中直接使用
+
+- 大於 `>`
+- 小於 `<`
+- 等於 `==`，為了不與變數設定混淆，判斷兩變數是否相等，要用**雙等號**
+- 大於等於 `>=`
+- 小於等於 `<=`
+
+```{r log1}
+num1<-1
+num2<-100
+num1>num2
+num1<num2
+```
+
+
+文字字串也可比較大小
+```{r log2}
+char1<-"abcTest" 
+char2<-"defTest"
+char1>char2
+```
+
+邏輯混合判斷，和JAVA等語言不同的是，在R中使用**單符號**即可表示且`&`和或`|`
+
+- 且 `&`
+- 或 `|`
+```{r log3}
+TRUE & TRUE
+TRUE & FALSE
+TRUE | TRUE
+TRUE | FALSE
+```
+
+反向布林變數`!`
+```{r log4}
+!TRUE
+!FALSE
+```
+## 錯誤訊息
+- Message：有可能的錯誤通知，程式會繼續執行
+- Warning：有錯誤，但是不會影響太多，程式會繼續執行
+- Error：有錯，而且無法繼續執行程式
+- Condition：可能會發生的情況
+```{r}
+log(-1)
+```
+```{r, error=T}
+mena(NA)
+```
+錯誤訊息範例1:
+```
+# Error: could not find function "fetch_NBAPlayerStatistics"
+# 找不到"fetch_NBAPlayerStatistics" function
+```
+可能原因：沒安裝或沒讀入SportsAnalytics package
+
+錯誤訊息範例2:
+```
+# Error in library(knitr): there is no package called 'knitr'
+# 找不到"knitr" package
+```
+可能原因：沒安裝knitr package
+
+## Help
+R語言與套件均有完整的文件與範例可以參考，在R的執行視窗中，輸入`?函數名稱`或`?套件名稱`即可看到函數或套件的使用說明
+```{r eval=F}
+?ggplot2
+?ymd
+```
+
+除此之外，[Stack Overflow](http://stackoverflow.com/){target="_blank"}中也有許多問答，可直接在網站中搜尋關鍵字與錯誤訊息。
+
+如果找不到解答，發問時請附上可以重現錯誤的**程式碼**與**資料**，以及系統/套件的版本資訊，版本資訊可以透過執行下列程式碼取得：
+
+```{r}
+sessionInfo()
+```
+
+
+

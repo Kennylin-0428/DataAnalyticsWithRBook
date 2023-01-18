@@ -1,0 +1,1837 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[
+]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={資料科學與R語言},
+  pdfauthor={曾意儒 Yi-Ju Tseng},
+  colorlinks=true,
+  linkcolor=Maroon,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=Blue,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{資料科學與R語言}
+\author{曾意儒 Yi-Ju Tseng}
+\date{2020-07-20}
+
+\begin{document}
+\maketitle
+
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\listoftables
+\listoffigures
+\hypertarget{preface}{%
+\chapter*{}\label{preface}}
+\addcontentsline{toc}{chapter}{}
+
+Placeholder
+
+\hypertarget{intro}{%
+\chapter{R語言101}\label{intro}}
+
+Placeholder
+
+\hypertarget{ux4ec0ux9ebcux662frux8a9eux8a00}{%
+\section{什麼是R語言}\label{ux4ec0ux9ebcux662frux8a9eux8a00}}
+
+\hypertarget{ux51fdux6578ux4f7fux7528}{%
+\section{函數使用}\label{ux51fdux6578ux4f7fux7528}}
+
+\hypertarget{ux8b8aux6578ux8a2dux5b9a}{%
+\section{變數設定}\label{ux8b8aux6578ux8a2dux5b9a}}
+
+\hypertarget{ux57f7ux884cux8996ux7a97}{%
+\section{執行視窗}\label{ux57f7ux884cux8996ux7a97}}
+
+\hypertarget{DataType}{%
+\section{資料型態}\label{DataType}}
+
+\hypertarget{ux6578ux503c-numeric}{%
+\subsection{數值 numeric}\label{ux6578ux503c-numeric}}
+
+\hypertarget{ux5b57ux4e32-character}{%
+\subsection{字串 character}\label{ux5b57ux4e32-character}}
+
+\hypertarget{ux5e03ux6797ux8b8aux6578-logic}{%
+\subsection{布林變數 logic}\label{ux5e03ux6797ux8b8aux6578-logic}}
+
+\hypertarget{ux65e5ux671f-date}{%
+\subsection{日期 (Date)}\label{ux65e5ux671f-date}}
+
+\hypertarget{ux57faux672cux904bux7b97ux5b50}{%
+\section{基本運算子}\label{ux57faux672cux904bux7b97ux5b50}}
+
+\hypertarget{ux6578ux5b78ux57faux672cux904bux7b97}{%
+\subsection{數學基本運算}\label{ux6578ux5b78ux57faux672cux904bux7b97}}
+
+\hypertarget{ux908fux8f2fux904bux7b97}{%
+\subsection{邏輯運算}\label{ux908fux8f2fux904bux7b97}}
+
+\hypertarget{ux932fux8aa4ux8a0aux606f}{%
+\section{錯誤訊息}\label{ux932fux8aa4ux8a0aux606f}}
+
+\hypertarget{help}{%
+\section{Help}\label{help}}
+
+\hypertarget{RDataStructure}{%
+\chapter{R 資料結構}\label{RDataStructure}}
+
+Placeholder
+
+\hypertarget{ux5411ux91cf-vector}{%
+\section{向量 vector}\label{ux5411ux91cf-vector}}
+
+\hypertarget{ux5febux901fux7522ux751fux5411ux91cfux51fdux6578}{%
+\subsection{快速產生向量函數}\label{ux5febux901fux7522ux751fux5411ux91cfux51fdux6578}}
+
+\hypertarget{ux5411ux91cfux904bux7b97}{%
+\subsection{向量運算}\label{ux5411ux91cfux904bux7b97}}
+
+\hypertarget{ux56e0ux5b50-factor}{%
+\section{因子 factor}\label{ux56e0ux5b50-factor}}
+
+\hypertarget{ux5217ux8868-list}{%
+\section{列表 list}\label{ux5217ux8868-list}}
+
+\hypertarget{ux5217ux8868ux8cc7ux6599ux64f7ux53d6}{%
+\subsection{列表資料擷取}\label{ux5217ux8868ux8cc7ux6599ux64f7ux53d6}}
+
+\hypertarget{ux5217ux8868ux8cc7ux6599ux7de8ux8f2fux8a2dux5b9a}{%
+\subsection{列表資料編輯設定}\label{ux5217ux8868ux8cc7ux6599ux7de8ux8f2fux8a2dux5b9a}}
+
+\hypertarget{ux77e9ux9663-matrix}{%
+\section{矩陣 matrix}\label{ux77e9ux9663-matrix}}
+
+\hypertarget{ux8cc7ux6599ux6846-data.frame}{%
+\section{資料框 data.frame}\label{ux8cc7ux6599ux6846-data.frame}}
+
+\hypertarget{ux8cc7ux6599ux8868-data.table}{%
+\section{資料表 data.table}\label{ux8cc7ux6599ux8868-data.table}}
+
+\hypertarget{ux8cc7ux6599ux5c6cux6027ux67e5ux8a62ux51fdux6578}{%
+\section{資料屬性查詢函數}\label{ux8cc7ux6599ux5c6cux6027ux67e5ux8a62ux51fdux6578}}
+
+\hypertarget{controlstructure}{%
+\chapter{控制流程}\label{controlstructure}}
+
+Placeholder
+
+\hypertarget{ux689dux4ef6ux5224ux65b7}{%
+\section{條件判斷}\label{ux689dux4ef6ux5224ux65b7}}
+
+\hypertarget{if-elseux6558ux8ff0}{%
+\subsection{if-else敘述}\label{if-elseux6558ux8ff0}}
+
+\hypertarget{if-else-if-else}{%
+\subsection{if-else if-else}\label{if-else-if-else}}
+
+\hypertarget{function}{%
+\chapter{函數}\label{function}}
+
+Placeholder
+
+\hypertarget{ux70baux4ec0ux9ebcux9700ux8981ux51fdux6578}{%
+\section{為什麼需要函數}\label{ux70baux4ec0ux9ebcux9700ux8981ux51fdux6578}}
+
+\hypertarget{ux51fdux6578ux7d44ux6210}{%
+\section{函數組成}\label{ux51fdux6578ux7d44ux6210}}
+
+\hypertarget{ux51fdux6578ux547dux540dux539fux5247}{%
+\section{函數命名原則}\label{ux51fdux6578ux547dux540dux539fux5247}}
+
+\hypertarget{ux51fdux6578ux7bc4ux4f8b}{%
+\section{函數範例}\label{ux51fdux6578ux7bc4ux4f8b}}
+
+\hypertarget{ux51fdux5f0fux7de8ux7a0bfunctional-programming}{%
+\section{函式編程Functional programming}\label{ux51fdux5f0fux7de8ux7a0bfunctional-programming}}
+
+\hypertarget{purrr}{%
+\section{purrr}\label{purrr}}
+
+\hypertarget{map2-family}{%
+\section{map2 family}\label{map2-family}}
+
+\hypertarget{ux53c3ux8003ux8cc7ux6599}{%
+\section{參考資料}\label{ux53c3ux8003ux8cc7ux6599}}
+
+\hypertarget{io}{%
+\chapter{資料讀取與匯出}\label{io}}
+
+Placeholder
+
+\hypertarget{ux7d14ux6587ux5b57ux8cc7ux6599-ux7121ux5206ux9694}{%
+\subsection{純文字資料 (無分隔)}\label{ux7d14ux6587ux5b57ux8cc7ux6599-ux7121ux5206ux9694}}
+
+\hypertarget{ux5176ux4ed6ux8b80ux6a94ux6ce8ux610fux4e8bux9805}{%
+\subsection{其他讀檔注意事項}\label{ux5176ux4ed6ux8b80ux6a94ux6ce8ux610fux4e8bux9805}}
+
+\hypertarget{open-data}{%
+\subsection{Open Data}\label{open-data}}
+
+\hypertarget{api}{%
+\subsection{API (Application programming interfaces)}\label{api}}
+
+\hypertarget{xml}{%
+\subsection{XML 可延伸標記式語言}\label{xml}}
+
+\hypertarget{xml-ux5957ux4ef6}{%
+\subsubsection{XML 套件}\label{xml-ux5957ux4ef6}}
+
+\hypertarget{xml2-ux5957ux4ef6}{%
+\subsubsection{xml2 套件}\label{xml2-ux5957ux4ef6}}
+
+\hypertarget{ux7db2ux9801ux722cux87f2-webscraping}{%
+\subsection{網頁爬蟲 Webscraping}\label{ux7db2ux9801ux722cux87f2-webscraping}}
+
+\hypertarget{facebookux8cc7ux6599ux64f7ux53d6}{%
+\section{Facebook資料擷取}\label{facebookux8cc7ux6599ux64f7ux53d6}}
+
+\hypertarget{graph-api-in-r}{%
+\subsection{Graph API in R}\label{graph-api-in-r}}
+
+\hypertarget{rfacebook-package}{%
+\subsection{Rfacebook package}\label{rfacebook-package}}
+
+\hypertarget{ux8cc7ux6599ux532fux51fa}{%
+\section{資料匯出}\label{ux8cc7ux6599ux532fux51fa}}
+
+\hypertarget{ux6587ux5b57ux6a94-.txt}{%
+\subsection{文字檔 .txt}\label{ux6587ux5b57ux6a94-.txt}}
+
+\hypertarget{csvux6a94-.csv}{%
+\subsection{CSV檔 .csv}\label{csvux6a94-.csv}}
+
+\hypertarget{rux7269ux4ef6-.rds}{%
+\subsection{R物件 .rds}\label{rux7269ux4ef6-.rds}}
+
+\hypertarget{manipulation}{%
+\chapter{資料處理與清洗}\label{manipulation}}
+
+Placeholder
+
+\hypertarget{tidy-data}{%
+\section{Tidy Data}\label{tidy-data}}
+
+\hypertarget{ux8cc7ux6599ux578bux5225ux8f49ux63dbux8655ux7406}{%
+\section{資料型別轉換處理}\label{ux8cc7ux6599ux578bux5225ux8f49ux63dbux8655ux7406}}
+
+\hypertarget{ux8cc7ux6599ux578bux5225ux6aa2ux67e5}{%
+\subsection{資料型別檢查}\label{ux8cc7ux6599ux578bux5225ux6aa2ux67e5}}
+
+\hypertarget{ux8cc7ux6599ux578bux5225ux8f49ux63db}{%
+\subsection{資料型別轉換}\label{ux8cc7ux6599ux578bux5225ux8f49ux63db}}
+
+\hypertarget{ux6587ux5b57ux5b57ux4e32ux8655ux7406}{%
+\section{文字字串處理}\label{ux6587ux5b57ux5b57ux4e32ux8655ux7406}}
+
+\hypertarget{ux57faux672cux8655ux7406}{%
+\subsection{基本處理}\label{ux57faux672cux8655ux7406}}
+
+\hypertarget{ux641cux5c0bux5b57ux4e32}{%
+\subsection{搜尋字串}\label{ux641cux5c0bux5b57ux4e32}}
+
+\hypertarget{ux6b63ux898fux8868ux793aux5f0f-regular-expression}{%
+\subsection{正規表示式 (Regular Expression)}\label{ux6b63ux898fux8868ux793aux5f0f-regular-expression}}
+
+\hypertarget{ux9003ux812bux5b57ux5143}{%
+\subsubsection{逃脫字元}\label{ux9003ux812bux5b57ux5143}}
+
+\hypertarget{ux8868ux793aux6578ux91cfux7684ux8a9eux6cd5}{%
+\subsubsection{表示數量的語法}\label{ux8868ux793aux6578ux91cfux7684ux8a9eux6cd5}}
+
+\hypertarget{ux8868ux793aux4f4dux7f6eux7684ux8a9eux6cd5}{%
+\subsubsection{表示位置的語法}\label{ux8868ux793aux4f4dux7f6eux7684ux8a9eux6cd5}}
+
+\hypertarget{ux904bux7b97ux5b50}{%
+\subsubsection{運算子}\label{ux904bux7b97ux5b50}}
+
+\hypertarget{ux7279ux6b8aux7b26ux865f}{%
+\subsubsection{特殊符號}\label{ux7279ux6b8aux7b26ux865f}}
+
+\hypertarget{ux53c3ux8003ux8cc7ux6599}{%
+\subsubsection{參考資料}\label{ux53c3ux8003ux8cc7ux6599}}
+
+\hypertarget{subset}{%
+\section{子集Subset}\label{subset}}
+
+\hypertarget{ux4e00ux7dadux8cc7ux6599-ux5411ux91cf}{%
+\subsection{一維資料 (向量)}\label{ux4e00ux7dadux8cc7ux6599-ux5411ux91cf}}
+
+\hypertarget{ux4e8cux7dadux8cc7ux6599}{%
+\subsection{二維資料}\label{ux4e8cux7dadux8cc7ux6599}}
+
+\hypertarget{ux6392ux5e8f}{%
+\section{排序}\label{ux6392ux5e8f}}
+
+\hypertarget{sort-ux5411ux91cfux6392ux5e8f}{%
+\subsection{sort 向量排序}\label{sort-ux5411ux91cfux6392ux5e8f}}
+
+\hypertarget{order}{%
+\subsection{order}\label{order}}
+
+\hypertarget{ux8cc7ux6599ux7d44ux5408}{%
+\section{資料組合}\label{ux8cc7ux6599ux7d44ux5408}}
+
+\hypertarget{ux8cc7ux6599ux7d50ux5408-join}{%
+\section{資料結合 (Join)}\label{ux8cc7ux6599ux7d50ux5408-join}}
+
+\hypertarget{reshape}{%
+\section{長表與寬表}\label{reshape}}
+
+\hypertarget{ux907aux6f0fux503cux8655ux7406}{%
+\section{遺漏值處理}\label{ux907aux6f0fux503cux8655ux7406}}
+
+\hypertarget{manCase}{%
+\section{綜合練習範例Case study}\label{manCase}}
+
+\hypertarget{ux8f09ux5165ux8cc7ux6599}{%
+\subsection{載入資料}\label{ux8f09ux5165ux8cc7ux6599}}
+
+\hypertarget{ux8cc7ux6599ux7e3dux89bd}{%
+\subsection{資料總覽}\label{ux8cc7ux6599ux7e3dux89bd}}
+
+\hypertarget{ux8cc7ux6599ux9810ux89bd}{%
+\subsection{資料預覽}\label{ux8cc7ux6599ux9810ux89bd}}
+
+\hypertarget{ux8cc7ux6599ux6392ux5e8fux5f8cux7be9ux9078}{%
+\subsection{資料排序後篩選}\label{ux8cc7ux6599ux6392ux5e8fux5f8cux7be9ux9078}}
+
+\hypertarget{ux6b04ux4f4dux503cux7be9ux9078}{%
+\subsection{欄位值篩選}\label{ux6b04ux4f4dux503cux7be9ux9078}}
+
+\hypertarget{ux5b57ux4e32ux689dux4ef6ux641cux5c0bux5f8cux7be9ux9078}{%
+\subsection{字串條件搜尋後篩選}\label{ux5b57ux4e32ux689dux4ef6ux641cux5c0bux5f8cux7be9ux9078}}
+
+\hypertarget{eda}{%
+\chapter{探索式資料分析}\label{eda}}
+
+Placeholder
+
+\hypertarget{ux4ec0ux9ebcux662fux63a2ux7d22ux5f0fux8cc7ux6599ux5206ux6790}{%
+\section{什麼是探索式資料分析}\label{ux4ec0ux9ebcux662fux63a2ux7d22ux5f0fux8cc7ux6599ux5206ux6790}}
+
+\hypertarget{datatable}{%
+\section{data.table}\label{datatable}}
+
+\hypertarget{i-ux89c0ux5bdfux503cux7be9ux9078ux908fux8f2f}{%
+\subsection{i 觀察值篩選邏輯}\label{i-ux89c0ux5bdfux503cux7be9ux9078ux908fux8f2f}}
+
+\hypertarget{j-ux6b04ux4f4dux9078ux64c7ux904bux7b97}{%
+\subsection{j 欄位選擇運算}\label{j-ux6b04ux4f4dux9078ux64c7ux904bux7b97}}
+
+\hypertarget{by-ux5206ux7d44ux4f9dux64da}{%
+\subsection{by 分組依據}\label{by-ux5206ux7d44ux4f9dux64da}}
+
+\hypertarget{ux53c3ux8003ux6587ux4ef6ux8207ux8cc7ux6e90}{%
+\subsection{參考文件與資源}\label{ux53c3ux8003ux6587ux4ef6ux8207ux8cc7ux6e90}}
+
+\hypertarget{dplyr}{%
+\section{dplyr}\label{dplyr}}
+
+\hypertarget{select}{%
+\subsection{select()}\label{select}}
+
+\hypertarget{filter}{%
+\subsection{filter()}\label{filter}}
+
+\hypertarget{mutate}{%
+\subsection{mutate()}\label{mutate}}
+
+\hypertarget{summarise}{%
+\subsection{summarise()}\label{summarise}}
+
+\hypertarget{group_by}{%
+\subsection{group\_by()}\label{group_by}}
+
+\hypertarget{arrange}{%
+\subsection{arrange()}\label{arrange}}
+
+\hypertarget{rename}{%
+\subsection{rename()}\label{rename}}
+
+\hypertarget{ux53c3ux8003ux6587ux4ef6ux8207ux8cc7ux6e90-1}{%
+\subsection{參考文件與資源}\label{ux53c3ux8003ux6587ux4ef6ux8207ux8cc7ux6e90-1}}
+
+\hypertarget{vis}{%
+\chapter{資料視覺化}\label{vis}}
+
+\hypertarget{ux8cc7ux6599ux8996ux89baux5316ux7684ux76eeux7684}{%
+\section{資料視覺化的目的}\label{ux8cc7ux6599ux8996ux89baux5316ux7684ux76eeux7684}}
+
+延續Ch \ref{eda}，探索式資料分析可分為圖形化Graphical 或 量化Quantitative分析，總括來說\textbf{作圖}的目的有:
+
+\begin{itemize}
+\tightlist
+\item
+  了解資料的特性
+\item
+  尋找資料的模式(patterns)
+\item
+  建議資料分析與建模的策略
+\item
+  結果呈現與溝通
+\end{itemize}
+
+其中前三項屬於探索圖 (Exploratory graphs)，結果呈現與溝通屬於結果圖 (Final graphs)，探索圖屬探索式資料分析，目的是在『看』與『觀察』資料的樣子，所以探索圖有以下特性:
+
+\begin{itemize}
+\tightlist
+\item
+  很快就可以做一張圖
+\item
+  探索過程中，可能可以做圖
+\item
+  主要目的是了解資料的樣子
+\item
+  不用做圖形格式調整美化
+\end{itemize}
+
+而在製作結果圖 (Final graphs)時，則須考慮以下事項:
+
+\begin{itemize}
+\tightlist
+\item
+  比較，呈現差異
+
+  \begin{itemize}
+  \tightlist
+  \item
+    比較什麼？誰跟誰比較？
+  \end{itemize}
+\item
+  呈現因果關係（causality）,機制（mechanism）,結果解釋（explanation）,系統化的結構（systematic structure）
+
+  \begin{itemize}
+  \tightlist
+  \item
+    因果模型？為什麼你想要做這樣的比較
+  \end{itemize}
+\item
+  呈現多變數（Multivariate）資料
+
+  \begin{itemize}
+  \tightlist
+  \item
+    多變數（Multivariate）：超過兩個變數就叫多變數
+  \item
+    所有真實事件都是多變數的
+  \end{itemize}
+\item
+  將證據整合呈現
+
+  \begin{itemize}
+  \tightlist
+  \item
+    在同一個畫面呈現文字、數字、影像、圖表
+  \item
+    盡量用圖形呈現資料
+  \end{itemize}
+\item
+  將圖表做適當的標記與說明，包括xy軸名稱、單位、資料來源等
+
+  \begin{itemize}
+  \tightlist
+  \item
+    資料圖表必須可以呈現你想說的故事
+  \end{itemize}
+\item
+  內容才是最重要的
+
+  \begin{itemize}
+  \tightlist
+  \item
+    資料不好，分析不好，圖表再美也沒有用
+  \end{itemize}
+\end{itemize}
+
+在R中，有三個常用的畫圖套件，包括基本功能(Base)、\texttt{lattice}以及\texttt{ggplot2}，由於各套件繪圖邏輯不同，本書只介紹最推薦的\texttt{ggplot2}套件的使用方式。
+
+\hypertarget{ggplot2ux7c21ux4ecb}{%
+\section{ggplot2簡介}\label{ggplot2ux7c21ux4ecb}}
+
+\texttt{ggplot2} \citep{R-ggplot2}的開發靈感來自於Dr. Leland Wilkinson的\href{http://www.springer.com/us/book/9780387245447}{Grammar of Graphics}
+
+``In brief, the grammar tells us that a statistical graphic is a \texttt{mapping} from data to \texttt{aesthetic} attributes (colour, shape, size) of \texttt{geometric} objects (points, lines, bars). The plot may also contain statistical transformations of the data and is drawn on a specific coordinate system''
+
+-from \texttt{ggplot2} book
+
+\texttt{ggplot2} Package是由\href{http://hadley.nz/}{Hadley Wickham}開發，是第三個R的畫圖Package。自發表以來一直是最熱門的R packages之一，目前還在持續發展更新中，對原始碼有興趣的人可以到\href{https://github.com/tidyverse/ggplot2}{GitHub}看一下最新動態。
+
+簡單來說，做圖的文法包括兩個最主要元素：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Aesthetic attributes}：包括顏色、形狀、點的大小與線的粗細等
+\item
+  \textbf{Geometric objects}：包括點、線、盒狀圖、直條圖等
+\end{itemize}
+
+其他元素包括：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Facets}：提供在同一張圖內做多個子圖的方法，只要使用Faceting功能設定子圖分類的依據參數即可
+\item
+  \textbf{Stats}：將資料做統計轉換
+\item
+  \textbf{Scales}：修改點線的顏色、形狀、xy軸的範圍等
+\end{itemize}
+
+在開始學ggplot2的核心功能之前，\texttt{qplot()}是ggplot2 Package提供最基本的畫圖方法，跟基本的plot() function很接近，提供一個簡單入門的方法。
+
+\hypertarget{qplot}{%
+\subsection{qplot()}\label{qplot}}
+
+\texttt{qplot()}為ggplot2 ``Hello, world!''，簡單使用\texttt{qplot(x軸名稱,y軸名稱,data=使用資料)}就可畫散佈圖
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(SportsAnalytics)}
+\NormalTok{NBA1516<-}\KeywordTok{fetch_NBAPlayerStatistics}\NormalTok{(}\StringTok{"15-16"}\NormalTok{) }\CommentTok{## 讀入資料}
+\KeywordTok{library}\NormalTok{(ggplot2) }\CommentTok{#記得將ggplot2 package讀入，如果沒安奘記得先安裝}
+\KeywordTok{qplot}\NormalTok{(FieldGoalsAttempted, TotalPoints, }\DataTypeTok{data =}\NormalTok{ NBA1516)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/qplot1-1.pdf}
+
+針對做圖的文法的第一個主要元素\textbf{Aesthetics}（包括顏色、形狀、點的大小與線的粗細等），可透過增加指令做修改，如加上\texttt{color=Position}，表示用守備位置Position著色
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qplot}\NormalTok{(FieldGoalsAttempted, TotalPoints, }\DataTypeTok{data =}\NormalTok{ NBA1516,}\DataTypeTok{color=}\NormalTok{Position)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/qplot2-1.pdf}
+針對做圖的文法的第二個主要元素\textbf{Geometric}（包括點、線、盒狀圖、直條圖等），也可透過增加指令修改，如使用\texttt{geom\ =\ c("point",\ "smooth")} 在圖上加點與漸進線
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qplot}\NormalTok{(FieldGoalsAttempted, TotalPoints, }\DataTypeTok{data =}\NormalTok{ NBA1516,}
+      \DataTypeTok{geom =} \KeywordTok{c}\NormalTok{(}\StringTok{"point"}\NormalTok{, }\StringTok{"smooth"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/qplot3-1.pdf}
+
+如果輸入的變量並非\textbf{雙}變量，而是\textbf{單}變量時，預設圖形會從\textbf{散佈圖}變為\textbf{Histograms直方圖}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#畫TotalPoints的直方圖/ fill = Position 並用守備位置Position著色}
+\KeywordTok{qplot}\NormalTok{(TotalPoints, }\DataTypeTok{data =}\NormalTok{ NBA1516, }\DataTypeTok{fill =}\NormalTok{ Position)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+作圖的\textbf{Facets}元素可提供在同一張圖內做多個子圖的方法，只要使用\texttt{facets\ =}來設定子圖分類的依據參數即可，以下圖為例，輸入的變量是\textbf{雙}變量，所以預設圖形為散佈圖，而設定子圖的語法為\texttt{直向分類\textasciitilde{}橫向分類}，直向分類意指以增加列（Row）的方式畫子圖，橫向分類意指以增加行（Column）的方式畫子圖，通常只會設定單一方向，如果選擇的是\texttt{直向}，\texttt{橫向分類}部分可用\texttt{.}表示，範例如下：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#facets = . ~ Position 用守備位置Position分群畫圖(橫向)}
+\KeywordTok{qplot}\NormalTok{(FieldGoalsAttempted, TotalPoints, }
+      \DataTypeTok{data =}\NormalTok{ NBA1516,}
+      \DataTypeTok{facets =}\NormalTok{ . }\OperatorTok{~}\StringTok{ }\NormalTok{Position)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#facets = . ~ Position 用守備位置Position分群畫圖(直向)}
+\KeywordTok{qplot}\NormalTok{(FieldGoalsAttempted, TotalPoints, }
+      \DataTypeTok{data =}\NormalTok{ NBA1516,}
+      \DataTypeTok{facets =}\NormalTok{ Position }\OperatorTok{~}\StringTok{ }\NormalTok{.)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\texttt{ggplot2}套件會自動幫使用者選擇顏色與圖形各項參數，但使用者也可依需求微調，如直方圖的分組間隔，可透過\texttt{binwidth}參數設定
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#facets = . ~ Position 用守備位置Position分群畫圖(直向)}
+\CommentTok{##binwidth = 2 每2分一組}
+\KeywordTok{qplot}\NormalTok{(TotalPoints, }\DataTypeTok{data =}\NormalTok{ NBA1516, }
+      \DataTypeTok{facets =}\NormalTok{ Position }\OperatorTok{~}\StringTok{ }\NormalTok{., }\DataTypeTok{binwidth =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#facets = . ~ Position 用守備位置Position分群畫圖(直向)}
+\CommentTok{##binwidth = 100 每100分一組}
+\KeywordTok{qplot}\NormalTok{(TotalPoints, }\DataTypeTok{data =}\NormalTok{ NBA1516,}
+      \DataTypeTok{facets =}\NormalTok{ Position }\OperatorTok{~}\StringTok{ }\NormalTok{., }\DataTypeTok{binwidth =} \DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+總括來說\texttt{qplot()}提供快速方便的畫圖功能，並且保留部分參數設定的彈性，但若需要調整更多參數，仍須使用完整的\texttt{ggplot()}函式。
+
+\hypertarget{ggplot}{%
+\subsection{ggplot()}\label{ggplot}}
+
+使用ggplot2作圖有以下步驟：
+
+\begin{itemize}
+\tightlist
+\item
+  準備好資料。當然要有資料才能畫圖
+\item
+  設定\textbf{Aesthetic attributes}。使用\texttt{aes(x,\ y,\ ...)}指定
+\item
+  指定\textbf{Geometric objects}。常用的包括\texttt{geom\_point()}、\texttt{geom\_line()}、\texttt{geom\_point()}、\texttt{geom\_polygon()}、\texttt{geom\_errorbar()}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2) }\CommentTok{##須先安裝 install.packages("ggplot2")}
+\end{Highlighting}
+\end{Shaded}
+
+首先先產生教學用畫圖資料
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{gp =} \KeywordTok{factor}\NormalTok{(}\KeywordTok{rep}\NormalTok{(letters[}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{], }\DataTypeTok{each =} \DecValTok{10}\NormalTok{)),}\DataTypeTok{y =} \KeywordTok{rnorm}\NormalTok{(}\DecValTok{30}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+設定兩個畫圖的重要元素\textbf{Aesthetic attributes}和\textbf{Geometric objects}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ gp, }\DataTypeTok{y =}\NormalTok{ y)) }\OperatorTok{+}\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-8-1.pdf}
+用\texttt{geom\_boxpolt()}改畫盒狀圖
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ gp, }\DataTypeTok{y =}\NormalTok{ y)) }\OperatorTok{+}\KeywordTok{geom_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-9-1.pdf}
+使用Faceting功能
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df}\OperatorTok{$}\NormalTok{z<-df}\OperatorTok{$}\NormalTok{y}\OperatorTok{+}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{30}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ z, }\DataTypeTok{y =}\NormalTok{ y)) }\OperatorTok{+}\KeywordTok{geom_point}\NormalTok{()}\OperatorTok{+}\KeywordTok{facet_grid}\NormalTok{(gp}\OperatorTok{~}\NormalTok{.)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-10-1.pdf}
+轉向
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ z, }\DataTypeTok{y =}\NormalTok{ y)) }\OperatorTok{+}\KeywordTok{geom_point}\NormalTok{()}\OperatorTok{+}\KeywordTok{facet_grid}\NormalTok{(.}\OperatorTok{~}\NormalTok{gp)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-11-1.pdf}
+用\texttt{geom\_smooth()}替xy散佈圖加上趨勢線
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ z, }\DataTypeTok{y =}\NormalTok{ y)) }\OperatorTok{+}\KeywordTok{geom_point}\NormalTok{()}\OperatorTok{+}\KeywordTok{facet_grid}\NormalTok{(gp}\OperatorTok{~}\NormalTok{.)}\OperatorTok{+}\KeywordTok{geom_smooth}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-12-1.pdf}
+用\texttt{geom\_smooth()}替xy散佈圖加上趨勢線，使用linear regresion
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ z, }\DataTypeTok{y =}\NormalTok{ y)) }\OperatorTok{+}\KeywordTok{geom_point}\NormalTok{()}\OperatorTok{+}\KeywordTok{facet_grid}\NormalTok{(gp}\OperatorTok{~}\NormalTok{.)}\OperatorTok{+}\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method=}\StringTok{'lm'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-13-1.pdf}
+改用\texttt{geom\_line()}畫線
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ z, }\DataTypeTok{y =}\NormalTok{ y)) }\OperatorTok{+}\KeywordTok{geom_line}\NormalTok{()}\OperatorTok{+}\KeywordTok{facet_grid}\NormalTok{(gp}\OperatorTok{~}\NormalTok{.)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-14-1.pdf}
+改用顏色分組，使用\texttt{aes(color=\textquotesingle{}group\ name\textquotesingle{})}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ z, }\DataTypeTok{y =}\NormalTok{ y, }\DataTypeTok{color=}\NormalTok{gp)) }\OperatorTok{+}\KeywordTok{geom_line}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+畫圖前需要注意的幾個小地方：
+
+提供資料時，把資料修改為想要在圖片顯示的文字。從上面的範例可以發現，ggplot2會直接將資料分組（a/b/c）直接標在圖上，與其之後再來改圖，不如在資料處理時就將a/b/c改為有意義且可以直接使用的文字。
+如果是離散性的資料，但卻又是數值時（像是1,2,3）可以用factor()轉換，ggplot會將factor視為離散資料。
+
+除了基本的製圖外，\texttt{ggplot2}套件也提供完整的資料標示設定與其他參數設定功能，包括：
+
+\begin{itemize}
+\tightlist
+\item
+  標籤 \texttt{xlab()}, \texttt{ylab()}, \texttt{labs(x=,y=)}, \texttt{ggtitle()}
+\item
+  每一個\texttt{geom\_*()}都有參數可設定
+\item
+  圖形樣式設定 \texttt{theme()}，可使用內建樣式
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{theme\_gray()}: 灰背景，預設樣式
+  \item
+    \texttt{theme\_bw()}: 黑白樣式
+  \end{itemize}
+\item
+  使用其他樣式套件
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{ggthemes} packages \href{https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html}{Website}
+  \item
+    \texttt{xkcd} packages \href{http://xkcd.r-forge.r-project.org/}{Website}
+  \end{itemize}
+\end{itemize}
+
+在比較多組的平均值高低時，因為各組樣本數與資料分佈不同，平均數的誤差值也會不同，所以在資料視覺化時，建議加上誤差線(Error bar)，誤差線通常使用在bar chart和line chart，而誤差值的計算有下列三種選擇：
+
+\begin{itemize}
+\tightlist
+\item
+  Standard deviation (SD) 標準差：呈現資料本質時使用
+\item
+  Standard error (SE) 標準誤差：呈現預估平均值的可能誤差時使用
+\item
+  Confidence interval (CI) 信賴區間：呈現預估平均值的信心時使用
+\end{itemize}
+
+以空氣污染料為例，若想比較各月臭氧濃度差異，可以使用bar chart來呈現，在ggplot2中，如果要畫bar chart，需要將\textbf{Geometric objects}設定為\texttt{geom\_bar}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(datasets) }
+\KeywordTok{library}\NormalTok{(data.table)}
+\NormalTok{airquality}\OperatorTok{$}\NormalTok{Month<-}\KeywordTok{as.factor}\NormalTok{(airquality}\OperatorTok{$}\NormalTok{Month) }\CommentTok{#將Month轉為因子變項}
+\NormalTok{airquality.mean<-}\KeywordTok{data.table}\NormalTok{(airquality)[,.(}\DataTypeTok{OzoneMean=}\KeywordTok{mean}\NormalTok{(Ozone,}\DataTypeTok{na.rm =}\NormalTok{ T)),by=Month] }\CommentTok{#計算每月Ozone平均}
+\KeywordTok{ggplot}\NormalTok{()}\OperatorTok{+}\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{data=}\NormalTok{airquality.mean,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Month,}\DataTypeTok{y=}\NormalTok{OzoneMean),}
+                  \DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{) }\CommentTok{#stat = "identity" 直接畫數字}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+在ggplot2套件中，只要加上\texttt{geom\_errorbar()}函式，設定資料高低值，就能在原圖中加上誤差線
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(datasets) }
+\KeywordTok{library}\NormalTok{(data.table)}
+\NormalTok{airquality}\OperatorTok{$}\NormalTok{Month<-}\KeywordTok{as.factor}\NormalTok{(airquality}\OperatorTok{$}\NormalTok{Month) }\CommentTok{#將Month轉為因子變項}
+\NormalTok{airquality.stat<-}\KeywordTok{data.table}\NormalTok{(airquality)[,.(}\DataTypeTok{OzoneMean=}\KeywordTok{mean}\NormalTok{(Ozone,}\DataTypeTok{na.rm =}\NormalTok{ T),}\DataTypeTok{OzoneSD=}\KeywordTok{sd}\NormalTok{(Ozone,}\DataTypeTok{na.rm =}\NormalTok{ T)),by=Month] }\CommentTok{#計算每月Ozone平均與標準差}
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data=}\NormalTok{airquality.stat)}\OperatorTok{+}\StringTok{ }\CommentTok{#資料airquality.eb}
+\StringTok{    }\KeywordTok{geom_bar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Month,}\DataTypeTok{y=}\NormalTok{OzoneMean),}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{)}\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_errorbar}\NormalTok{( }\CommentTok{#ymin低點, ymax高點}
+        \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Month,}\DataTypeTok{ymin=}\NormalTok{OzoneMean}\OperatorTok{-}\NormalTok{OzoneSD,}\DataTypeTok{ymax=}\NormalTok{OzoneMean}\OperatorTok{+}\NormalTok{OzoneSD), }\DataTypeTok{width=}\NormalTok{.}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\hypertarget{ggplot2ux5730ux5716}{%
+\section{ggplot2+地圖}\label{ggplot2ux5730ux5716}}
+
+\hypertarget{choropleth-mapux9762ux91cfux5716}{%
+\subsection{Choropleth map面量圖}\label{choropleth-mapux9762ux91cfux5716}}
+
+Choropleth map\href{https://en.wikipedia.org/wiki/Choropleth_map}{面量圖}是指\textbf{把統計資料用顏色畫在對應的地圖上}的一種資料視覺化方式，在R中可以使用\texttt{choroplethr}\citep{R-choroplethr} package來畫面量圖，
+\texttt{choroplethr} package是一個基於\texttt{ggplot2} package的\texttt{面量圖}做圖工具，使用前需要先安裝，建議同時安裝\texttt{choroplethrMaps} package
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"choroplethr"}\NormalTok{,}\StringTok{"choroplethrMaps"}\NormalTok{)) }\CommentTok{##第一次使用前先安裝}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(choroplethr)}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{choroplethr}\citep{R-choroplethr} package內建美國各州地圖與人口學資料，所以可以輕鬆使用\texttt{state\_choropleth()}函式畫出美國各州人口分布
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(df_pop_state) }\CommentTok{#記載各州人口數的資料}
+\KeywordTok{state_choropleth}\NormalTok{(df_pop_state) }\CommentTok{#把各州人口畫在地圖上}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-20-1.pdf}
+
+若將\texttt{reference\_map}設定為\texttt{=\ TRUE}，可在面量圖的背景加上google地圖，因google地圖需要使用API key，因此須先使用ggmap套件的\texttt{register\_google(key\ =\ "your\ key")}，帶入google金鑰設定授權金鑰。以下金鑰為示範金鑰，目前已失效，請自行至\href{https://console.cloud.google.com/}{Google Cloud Platform}，點選API及服務申請Maps Static API後，複製API key。
+
+{[}2020/05/25更新{]}：似乎需在\href{https://console.cloud.google.com/}{Google Cloud Platform} 綁定服務使用付款信用卡才可以順利經由ggmap套件取得圖層。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(continental_us_states)}
+\KeywordTok{library}\NormalTok{(ggmap)}
+\KeywordTok{register_google}\NormalTok{(}\DataTypeTok{key =} \StringTok{"AIzaSyBD_nXDjGMYcJO9e_3SI_h3YZwhx0if680"}\NormalTok{)}
+\KeywordTok{state_choropleth}\NormalTok{(df_pop_state,}\DataTypeTok{reference_map =} \OtherTok{TRUE}\NormalTok{,}
+                 \DataTypeTok{zoom=}\NormalTok{ continental_us_states) }\CommentTok{#把各州人口畫在地圖上}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-21-1.pdf}
+
+除了美國地圖外，使用\texttt{choroplethr} package搭配\texttt{WDI}: \href{http://beta.data.worldbank.org/}{World Development Indicators} 的世界人口分布資料，可以針對世界人口分佈做\textbf{面量圖}。
+世界人口資料的代碼為\texttt{SP.POP.TOTL}，代碼查詢可見\href{http://beta.data.worldbank.org/}{World Development Indicators}
+
+由於需要使用\texttt{WDI}的資料，所以需要安裝與載入\texttt{WDI}\citep{R-WDI} package
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"WDI"}\NormalTok{) }\CommentTok{##第一次使用前先安裝}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(WDI)}
+\KeywordTok{choroplethr_wdi}\NormalTok{(}\DataTypeTok{code=}\StringTok{"SP.POP.TOTL"}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2016}\NormalTok{, }
+                \DataTypeTok{title=}\StringTok{"2016 Population"}\NormalTok{, }\DataTypeTok{num_colors=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+除了人口資料外，WDI也有世界平均壽命資料，平均壽命的代碼為\texttt{SP.DYN.LE00.IN}，代碼查詢可見\href{http://beta.data.worldbank.org/}{World Development Indicators}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{choroplethr_wdi}\NormalTok{(}\DataTypeTok{code=}\StringTok{"SP.DYN.LE00.IN"}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2016}\NormalTok{, }
+                \DataTypeTok{title=}\StringTok{"2016 Life Expectancy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+如果只需亞洲太平洋人口分布，可使用\texttt{zoom}參數設定想畫的國家，國家的名稱設定必須要和\texttt{country.regions}資料完全吻合
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{choroplethr_wdi}\NormalTok{(}\DataTypeTok{code=}\StringTok{"SP.POP.TOTL"}\NormalTok{, }\DataTypeTok{year=}\DecValTok{2015}\NormalTok{, }
+                \DataTypeTok{title=}\StringTok{"2015 Life Expectancy"}\NormalTok{,}
+                \DataTypeTok{zoom=}\KeywordTok{c}\NormalTok{(}\StringTok{'taiwan'}\NormalTok{,}\StringTok{'japan'}\NormalTok{,}\StringTok{'south korea'}\NormalTok{,}\StringTok{'philippines'}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ggmap}{%
+\subsection{ggmap()}\label{ggmap}}
+
+\texttt{ggmap}\citep{R-ggmap} package是一個可以把google map載入並作圖的套件，一樣是基於\texttt{ggplot2}套件開發的。
+依照往例，第一次使用前需要安裝
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"ggmap"}\NormalTok{, }\DataTypeTok{type =} \StringTok{"source"}\NormalTok{) }\CommentTok{##第一次使用前先安裝}
+\end{Highlighting}
+\end{Shaded}
+
+載入\texttt{ggmap}\citep{R-ggmap} package後，可以使用\texttt{get\_googlemap()}函式取得google map圖層，並用\texttt{ggmap()}函式將取得的圖層畫出來，使用google map的資源時，必須先使用register\_google(key = ``your key'')帶入google金鑰。
+投影片金鑰已失效，請自行至Google Cloud Platform，點選API及服務申請Maps Static API後，複製API key。
+
+{[}2020/05/25更新{]}：似乎需在\href{https://console.cloud.google.com/}{Google Cloud Platform} 綁定服務使用付款信用卡才可以順利經由ggmap套件取得圖層。
+
+\texttt{get\_googlemap()}函式需要設定的參數如下：
+
+\begin{itemize}
+\tightlist
+\item
+  center 中心點經緯度座標
+\item
+  zoom 放大倍率
+\item
+  language 地圖語言
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggmap)}
+\KeywordTok{register_google}\NormalTok{(}\DataTypeTok{key =} \StringTok{"AIzaSyBD_nXDjGMYcJO9e_3SI_h3YZwhx0if680"}\NormalTok{)}
+\NormalTok{twmap <-}\StringTok{ }\KeywordTok{get_googlemap}\NormalTok{(}\DataTypeTok{center =} \KeywordTok{c}\NormalTok{(}\DataTypeTok{lon=}\FloatTok{120.58}\NormalTok{,}\DataTypeTok{lat=}\FloatTok{23.58}\NormalTok{), }
+                  \DataTypeTok{zoom =} \DecValTok{7}\NormalTok{,}
+                  \DataTypeTok{language =} \StringTok{"zh-TW"}\NormalTok{)}
+\KeywordTok{ggmap}\NormalTok{(twmap)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-24-1.pdf}
+
+只要資料有經緯度等資訊，就可以使用\texttt{ggmap} package與各式資料結合呈現，以台北市水質地圖開放資料為例，首先先將資料載入處理（參考Ch \ref{JSON}）。台北市水質資料的Open data API網址是http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire\&rid=190796c8-7c56-42e0-8068-39242b8ec927
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{##資料載入}
+\KeywordTok{library}\NormalTok{(jsonlite)}
+\KeywordTok{library}\NormalTok{(RCurl)}
+\NormalTok{WaterData<-}\KeywordTok{fromJSON}\NormalTok{(}\KeywordTok{getURL}\NormalTok{(}\StringTok{"http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=190796c8-7c56-42e0-8068-39242b8ec927"}\NormalTok{))}
+\NormalTok{WaterDataFrame<-WaterData}\OperatorTok{$}\NormalTok{result}\OperatorTok{$}\NormalTok{results}
+\NormalTok{WaterDataFrame}\OperatorTok{$}\NormalTok{longitude<-}\KeywordTok{as.numeric}\NormalTok{(WaterDataFrame}\OperatorTok{$}\NormalTok{longitude)}
+\NormalTok{WaterDataFrame}\OperatorTok{$}\NormalTok{latitude<-}\KeywordTok{as.numeric}\NormalTok{(WaterDataFrame}\OperatorTok{$}\NormalTok{latitude)}
+\NormalTok{WaterDataFrame}\OperatorTok{$}\NormalTok{qua_cntu<-}\KeywordTok{as.numeric}\NormalTok{(WaterDataFrame}\OperatorTok{$}\NormalTok{qua_cntu)}
+\CommentTok{##結合ggmap}
+\KeywordTok{library}\NormalTok{(ggmap)}
+\NormalTok{TaipeiMap <-}\StringTok{ }\KeywordTok{get_googlemap}\NormalTok{(}
+    \DataTypeTok{center  =} \KeywordTok{c}\NormalTok{(}\DataTypeTok{lon=}\FloatTok{121.50}\NormalTok{,}\DataTypeTok{lat=}\FloatTok{25.06}\NormalTok{), }
+    \DataTypeTok{zoom =} \DecValTok{11}\NormalTok{, }\DataTypeTok{maptype =} \StringTok{'roadmap'}\NormalTok{)}
+\NormalTok{TaipeiMapO <-}\StringTok{ }\KeywordTok{ggmap}\NormalTok{(TaipeiMap)}\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data=}\NormalTok{WaterDataClean, }
+               \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{longitude, }\DataTypeTok{y=}\NormalTok{latitude,}
+                   \DataTypeTok{color=}\NormalTok{qua_cntu),}\DataTypeTok{size=}\FloatTok{3.5}\NormalTok{)}\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{scale_color_continuous}\NormalTok{(}
+        \DataTypeTok{low =} \StringTok{"yellow"}\NormalTok{,}\DataTypeTok{high =} \StringTok{"red"}\NormalTok{)}\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{size=}\OtherTok{FALSE}\NormalTok{)}
+\NormalTok{TaipeiMapO}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=16.39in]{figure/waterQ}
+
+\texttt{ggmap}套件提供多種地圖型態，使用者可透過設定\texttt{maptype}自行選擇適合的地圖樣式，樣式有：
+
+\begin{itemize}
+\tightlist
+\item
+  terrain
+\item
+  terrain-background
+\item
+  satellite
+\item
+  roadmap
+\item
+  hybrid (google maps)
+\item
+  watercolor
+\item
+  toner (stamen maps)
+\end{itemize}
+
+透過設定\texttt{extent}參數可將地圖輸出樣式改為滿版
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggmap)}
+\KeywordTok{ggmap}\NormalTok{(TaipeiMap,}\DataTypeTok{extent =} \StringTok{'device'}\NormalTok{) }\CommentTok{#extent = 'device' 滿版}
+\end{Highlighting}
+\end{Shaded}
+
+\#\#\#Density Map
+除了面量圖外，密度圖Density Map也是常用來表示因地理位置不同的數值差異，以下是美國人口密度圖範例
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+上述範例使用 \texttt{ggplot2} + \texttt{ggmap} 套件來畫人口密度圖，做圖的第一步是資料載入，包括取得美國各州中心座標資料以及美國各州人口資料
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#取得美國各州中心座標資料}
+\NormalTok{StateCenter<-}\KeywordTok{data.frame}\NormalTok{( }
+    \DataTypeTok{region=}\KeywordTok{tolower}\NormalTok{(state.name),}\DataTypeTok{lon=}\NormalTok{state.center}\OperatorTok{$}\NormalTok{x,}\DataTypeTok{lat=}\NormalTok{state.center}\OperatorTok{$}\NormalTok{y)}
+\KeywordTok{head}\NormalTok{(StateCenter,}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    region      lon     lat
+## 1 alabama -86.7509 32.5901
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#美國各州人口資料}
+\NormalTok{StatePop<-}\KeywordTok{merge}\NormalTok{(df_pop_state,StateCenter,}\DataTypeTok{by=}\StringTok{"region"}\NormalTok{) }
+\KeywordTok{head}\NormalTok{(StatePop,}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    region   value      lon     lat
+## 1 alabama 4777326 -86.7509 32.5901
+\end{verbatim}
+
+第二個步驟是將人口數字轉換為\textbf{資料列數}，需要這樣轉換的原因是密度圖是用資料列數來決定畫圖的密度，而不是透過單一數值，所以需要在此步驟做轉換
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#將人口數值，轉為點！重要！}
+\NormalTok{PopPoint<-}\OtherTok{NULL} 
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(StatePop))\{}
+    \CommentTok{#每100萬人轉為1點}
+    \ControlFlowTok{for}\NormalTok{(j }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{(StatePop[i,}\StringTok{"value"}\NormalTok{]}\OperatorTok{/}\DecValTok{1000000}\NormalTok{))\{}
+\NormalTok{        PopPoint<-}\KeywordTok{rbind}\NormalTok{(PopPoint,StatePop[i,])   }
+\NormalTok{    \}}
+\NormalTok{\}}
+\KeywordTok{head}\NormalTok{(PopPoint,}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    region   value      lon     lat
+## 1 alabama 4777326 -86.7509 32.5901
+## 2 alabama 4777326 -86.7509 32.5901
+## 3 alabama 4777326 -86.7509 32.5901
+\end{verbatim}
+
+第三個步驟是作圖
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{USMap <-}\StringTok{ }\KeywordTok{get_googlemap}\NormalTok{(}\DataTypeTok{center =} \KeywordTok{c}\NormalTok{(}\DataTypeTok{lon=}\OperatorTok{-}\FloatTok{99.582}\NormalTok{,}\DataTypeTok{lat=}\FloatTok{40.091}\NormalTok{), }\DataTypeTok{zoom =} \DecValTok{4}\NormalTok{)}
+\NormalTok{densityMap<-}\KeywordTok{ggmap}\NormalTok{(USMap, }\DataTypeTok{extent =} \StringTok{"device"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_density2d}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ PopPoint, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ lon, }\DataTypeTok{y =}\NormalTok{ lat), }\DataTypeTok{size =} \FloatTok{0.3}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{stat_density2d}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ PopPoint, }
+            \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ lon, }\DataTypeTok{y =}\NormalTok{ lat, }\DataTypeTok{fill =}\NormalTok{ ..level.., }\DataTypeTok{alpha =}\NormalTok{ ..level..), }
+                \DataTypeTok{size =} \FloatTok{0.01}\NormalTok{, }\DataTypeTok{bins =} \DecValTok{16}\NormalTok{, }\DataTypeTok{geom =} \StringTok{"polygon"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{low =} \StringTok{"green"}\NormalTok{, }\DataTypeTok{high =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{guide =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{scale_alpha}\NormalTok{(}\DataTypeTok{range =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.3}\NormalTok{), }\DataTypeTok{guide =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{densityMap}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-31-1.pdf}
+
+\#\#\#參考資料
+- \href{https://github.com/dkahle/ggmap}{ggmap package source code}
+- \href{https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/ggmap/ggmapCheatsheet.pdf}{ggmap cheat sheet}
+- \href{https://dl.dropboxusercontent.com/u/24648660/ggmap\%20useR\%202012.pdf}{ggmap doc}
+
+\hypertarget{taiwanux7684ux9762ux91cfux5716}{%
+\section{Taiwan的面量圖}\label{taiwanux7684ux9762ux91cfux5716}}
+
+因為畫台灣的面量圖尚無好的套件輔助，但因Open Data的關係，我們可以很容易地取得台灣鄉鎮市邊界的經緯度檔案，通常地圖/邊界經緯度檔案是用空間資料開放格式\texttt{shapefile} \texttt{.shp}儲存，透過\href{http://data.gov.tw/}{政府資料開放平台}可以下載台灣的地圖資料，資料集名稱為\href{http://data.gov.tw/node/7441}{鄉鎮市區界線}。使用\texttt{shapefile}與\texttt{ggplot2}畫圖的步驟如下：
+
+\begin{itemize}
+\tightlist
+\item
+  取得空間資料檔案
+\item
+  使用\texttt{rgdal}, \texttt{rgeos},\texttt{maptools} package處理地圖檔shapefile
+\item
+  使用\texttt{ggplot2} \& \texttt{RColorBrewer} 畫圖
+\end{itemize}
+
+上述套件在第一次使用前需要安裝與載入
+
+\includegraphics[width=15.71in]{figure/Taiwan}
+
+以上各步驟詳述如下：
+1. 處理shapefile-1
+
+\begin{itemize}
+\tightlist
+\item
+  需要\texttt{rgdal}, \texttt{rgeos},\texttt{maptools}
+\item
+  fortify: 將\texttt{shapefile}物件轉為\texttt{data.frame}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2) }\CommentTok{#for fortify(), ggplot(), ggmap()}
+\KeywordTok{head}\NormalTok{(tw_new}\OperatorTok{$}\NormalTok{Town_ID)}
+\NormalTok{tw_new.df <-}\StringTok{ }\KeywordTok{fortify}\NormalTok{(tw_new, }\DataTypeTok{region =} \StringTok{"T_UID"}\NormalTok{) }\CommentTok{#from ggplot2 package}
+\KeywordTok{head}\NormalTok{(tw_new.df,}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+       long      lat order  hole piece id group
+1  119.9170 26.17518     1 FALSE     1  1   1.1
+2  119.9171 26.17517     2 FALSE     1  1   1.1
+3  119.9171 26.17518     3 FALSE     1  1   1.1
+4  119.9171 26.17518     4 FALSE     1  1   1.1
+5  119.9171 26.17518     5 FALSE     1  1   1.1
+6  119.9172 26.17518     6 FALSE     1  1   1.1
+7  119.9172 26.17518     7 FALSE     1  1   1.1
+8  119.9172 26.17518     8 FALSE     1  1   1.1
+9  119.9173 26.17515     9 FALSE     1  1   1.1
+10 119.9173 26.17515    10 FALSE     1  1   1.1
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  做一個假資料來畫：著色基準檔
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#做一個假資料來畫}
+\CommentTok{#prevalence設為亂數rnorm(需要的亂數個數)}
+\NormalTok{mydata<-}\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{NAME_2=}\NormalTok{tw_new}\OperatorTok{$}\NormalTok{T_Name, }\DataTypeTok{id=}\NormalTok{tw_new}\OperatorTok{$}\NormalTok{T_UID,}
+                   \DataTypeTok{prevalence=}\KeywordTok{rnorm}\NormalTok{(}\KeywordTok{length}\NormalTok{(tw_new}\OperatorTok{$}\NormalTok{T_UID)))}
+\KeywordTok{head}\NormalTok{(mydata)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+                  NAME_2  id prevalence
+1 \xa6\xa8\xa5\\\xc2\xed 178  1.0551637
+2            \xa8ΥV\xb6m 164 -0.6307466
+3     \xb3\xc1\xbcd\xb6m 118 -1.2255327
+4     \xba\xf1\xaeq\xb6m 376  0.1314583
+5  \xc4\xf5\xc0\xac\xb6m 369  1.3665832
+6      \xa5Ф\xa4\xc2\xed  78 -0.3132549
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  處理中文編碼
+  利用iconv將不知所以然的代碼（\xa6\xa8\xa5\textbackslash{}\xc2\xed）轉為看得懂的中文
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#from big5 to utf-8}
+\NormalTok{mydata}\OperatorTok{$}\NormalTok{NAME_}\DecValTok{2}\NormalTok{<-}\KeywordTok{iconv}\NormalTok{(}\KeywordTok{as.character}\NormalTok{(mydata}\OperatorTok{$}\NormalTok{NAME_}\DecValTok{2}\NormalTok{), }\CommentTok{#NAME_2原本是factor}
+                     \DataTypeTok{from=}\StringTok{"big5"}\NormalTok{, }\DataTypeTok{to =} \StringTok{"UTF-8"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(mydata,}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   NAME_2  id prevalence
+1  成功鎮 178  1.0551637
+2  佳冬鄉 164 -0.6307466
+3  麥寮鄉 118 -1.2255327
+4  綠島鄉 376  0.1314583
+5  蘭嶼鄉 369  1.3665832
+6  田中鎮  78 -0.3132549
+7  社頭鄉  83  1.2072224
+8  竹田鄉 157  0.7312959
+9  萬丹鄉 148  1.4849184
+10 三灣鄉  64  0.6094254
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  合併的圖檔與著色基準檔
+  最後將有prevalence的假數據mydata和經緯度資料tw\_new.df合併, 用merge()
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{final.plot<-}\KeywordTok{merge}\NormalTok{(tw_new.df,mydata,}\DataTypeTok{by=}\StringTok{"id"}\NormalTok{,}\DataTypeTok{all.x=}\NormalTok{T)}
+\KeywordTok{head}\NormalTok{(final.plot,}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   id     long      lat order  hole piece group NAME_2 prevalence
+1   1 119.9170 26.17518     1 FALSE     1   1.1 南竿鄉  0.9584632
+2   1 119.9171 26.17517     2 FALSE     1   1.1 南竿鄉  0.9584632
+3   1 119.9171 26.17518     3 FALSE     1   1.1 南竿鄉  0.9584632
+4   1 119.9171 26.17518     4 FALSE     1   1.1 南竿鄉  0.9584632
+5   1 119.9171 26.17518     5 FALSE     1   1.1 南竿鄉  0.9584632
+6   1 119.9172 26.17518     6 FALSE     1   1.1 南竿鄉  0.9584632
+7   1 119.9172 26.17518     7 FALSE     1   1.1 南竿鄉  0.9584632
+8   1 119.9172 26.17518     8 FALSE     1   1.1 南竿鄉  0.9584632
+9   1 119.9173 26.17515     9 FALSE     1   1.1 南竿鄉  0.9584632
+10  1 119.9173 26.17515    10 FALSE     1   1.1 南竿鄉  0.9584632
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  畫台灣面量圖
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(RColorBrewer) }\CommentTok{#配色用brewer.pal( 9 , "Reds" )}
+\NormalTok{twcmap<-}\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_polygon}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ final.plot, }
+                 \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ long, }\DataTypeTok{y =}\NormalTok{ lat, }\DataTypeTok{group =}\NormalTok{ group, }
+                     \DataTypeTok{fill =}\NormalTok{ prevalence), }
+                 \DataTypeTok{color =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{0.25}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{coord_map}\NormalTok{()}\OperatorTok{+}\CommentTok{#維持地圖比例}
+\StringTok{    }\KeywordTok{scale_fill_gradientn}\NormalTok{(}\DataTypeTok{colours =} \KeywordTok{brewer.pal}\NormalTok{(}\DecValTok{9}\NormalTok{,}\StringTok{"Reds"}\NormalTok{))}\OperatorTok{+}
+\StringTok{    }\KeywordTok{theme_void}\NormalTok{()}\OperatorTok{+}
+\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title=}\StringTok{"Prevalence of X in Taiwan"}\NormalTok{)}
+\NormalTok{twcmap}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=15.71in]{figure/Taiwan}
+
+\hypertarget{ggmapux9762ux91cfux5716}{%
+\subsection{ggmap+面量圖}\label{ggmapux9762ux91cfux5716}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggmap)}
+\NormalTok{twmap <-}\StringTok{ }\KeywordTok{get_googlemap}\NormalTok{(}\DataTypeTok{center =} \KeywordTok{c}\NormalTok{(}\DataTypeTok{lon=}\FloatTok{120.58}\NormalTok{,}\DataTypeTok{lat=}\FloatTok{23.58}\NormalTok{), }
+                       \DataTypeTok{zoom =} \DecValTok{7}\NormalTok{,}\DataTypeTok{language =} \StringTok{"zh-TW"}\NormalTok{)}
+\KeywordTok{ggmap}\NormalTok{(twmap)}\OperatorTok{+}\StringTok{ }\CommentTok{#ggmap}
+\StringTok{    }\KeywordTok{geom_polygon}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ final.plot,  }\CommentTok{#面量圖}
+        \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ long, }\DataTypeTok{y =}\NormalTok{ lat, }\DataTypeTok{group =}\NormalTok{ group, }\DataTypeTok{fill =}\NormalTok{ prevalence), }
+        \DataTypeTok{color =} \StringTok{"grey80"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{0.1}\NormalTok{,}\DataTypeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\KeywordTok{scale_fill_gradientn}\NormalTok{(}\DataTypeTok{colours =} \KeywordTok{brewer.pal}\NormalTok{(}\DecValTok{9}\NormalTok{,}\StringTok{"Reds"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics[width=9.32in]{figure/ggmapTaiwan}
+
+\#\#Heatmap
+\texttt{Heatmap}熱度圖使用顏色的深淺來表示數值的大小，通常會搭配XY兩軸的變量，所以使用一張圖就能表示三個維度的資訊，在ggplot2套件中，可以使用\texttt{geom\_tile()}來畫Heatmap，以下以NBA球員的資料作為範例，希望能透過Heatmap來呈現球員表現的差異。
+首先先將檔案讀入
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#讀.csv檔案}
+\NormalTok{nba <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"http://datasets.flowingdata.com/ppg2008.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(nba)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             Name  G  MIN  PTS  FGM  FGA   FGP FTM FTA   FTP X3PM X3PA  X3PP ORB
+## 1   Dwyane Wade  79 38.6 30.2 10.8 22.0 0.491 7.5 9.8 0.765  1.1  3.5 0.317 1.1
+## 2  LeBron James  81 37.7 28.4  9.7 19.9 0.489 7.3 9.4 0.780  1.6  4.7 0.344 1.3
+## 3   Kobe Bryant  82 36.2 26.8  9.8 20.9 0.467 5.9 6.9 0.856  1.4  4.1 0.351 1.1
+## 4 Dirk Nowitzki  81 37.7 25.9  9.6 20.0 0.479 6.0 6.7 0.890  0.8  2.1 0.359 1.1
+## 5 Danny Granger  67 36.2 25.8  8.5 19.1 0.447 6.0 6.9 0.878  2.7  6.7 0.404 0.7
+## 6  Kevin Durant  74 39.0 25.3  8.9 18.8 0.476 6.1 7.1 0.863  1.3  3.1 0.422 1.0
+##   DRB TRB AST STL BLK  TO  PF
+## 1 3.9 5.0 7.5 2.2 1.3 3.4 2.3
+## 2 6.3 7.6 7.2 1.7 1.1 3.0 1.7
+## 3 4.1 5.2 4.9 1.5 0.5 2.6 2.3
+## 4 7.3 8.4 2.4 0.8 0.8 1.9 2.2
+## 5 4.4 5.1 2.7 1.0 1.4 2.5 3.1
+## 6 5.5 6.5 2.8 1.3 0.7 3.0 1.8
+\end{verbatim}
+
+為了做圖，將寬表轉長表，寬表與長表的概念可參見\ref{reshape}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(reshape2) }\CommentTok{#for melt()}
+\NormalTok{nba.m <-}\StringTok{ }\KeywordTok{melt}\NormalTok{(nba,}\DataTypeTok{id.vars =} \StringTok{"Name"}\NormalTok{) }\CommentTok{#寬表轉長表,以名字作依據}
+\KeywordTok{head}\NormalTok{(nba.m,}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                Name variable value
+## 1      Dwyane Wade         G    79
+## 2     LeBron James         G    81
+## 3      Kobe Bryant         G    82
+## 4    Dirk Nowitzki         G    81
+## 5    Danny Granger         G    67
+## 6     Kevin Durant         G    74
+## 7     Kevin Martin         G    51
+## 8     Al Jefferson         G    50
+## 9       Chris Paul         G    78
+## 10 Carmelo Anthony         G    66
+\end{verbatim}
+
+將Geometric objects指定為\texttt{geom\_tile()}，完成Heatmap
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2) }\CommentTok{#for ggplot()}
+\KeywordTok{ggplot}\NormalTok{(nba.m, }\KeywordTok{aes}\NormalTok{(variable, Name)) }\OperatorTok{+}\StringTok{ }\CommentTok{#aes(x,y)}
+\StringTok{    }\KeywordTok{geom_tile}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ value),}\DataTypeTok{colour =} \StringTok{"white"}\NormalTok{)}\OperatorTok{+}\StringTok{ }\CommentTok{#geom_tile: 區塊著色}
+\StringTok{    }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{low =} \StringTok{"white"}\NormalTok{,}\DataTypeTok{high =} \StringTok{"steelblue"}\NormalTok{) }\CommentTok{#數值低：白色}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-44-1.pdf}
+
+看上圖可以發現，因為G欄資料明顯大於其他欄位，導致顏色差異不明顯，為了解決此問題，將個欄位的資料標準化處理，這邊使用到apply函式
+
+apply()有類似for迴圈的功能
+
+\begin{itemize}
+\tightlist
+\item
+  apply(Data, MARGIN, FUN,\ldots)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Data：矩陣（Matrix），Data Frame
+  \item
+    MARGIN：1=row, 2=column
+  \item
+    FUN：函數
+  \item
+    \ldots：函數要用的參數
+  \end{itemize}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nba[,}\DecValTok{2}\OperatorTok{:}\DecValTok{21}\NormalTok{]<-}\KeywordTok{apply}\NormalTok{(nba[,}\DecValTok{2}\OperatorTok{:}\DecValTok{21}\NormalTok{], }\DecValTok{2}\NormalTok{, scale) }\CommentTok{#scale處理，將數值轉為平均=0}
+\KeywordTok{head}\NormalTok{(nba,}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            Name         G       MIN      PTS      FGM      FGA       FGP
+## 1  Dwyane Wade  0.6179300 1.0019702 3.179941 2.920022 2.596832 0.5136017
+## 2 LeBron James  0.7693834 0.6119299 2.566974 1.957185 1.697237 0.4649190
+##        FTM      FTA        FTP       X3PM      X3PA        X3PP         ORB
+## 1 1.917475 2.110772 -0.7401673 -0.1080044 0.1303647 -0.15749098 -0.27213551
+## 2 1.778729 1.896589 -0.5233214  0.4920201 0.6971679  0.02738974 -0.06117775
+##          DRB        TRB      AST      STL       BLK       TO         PF
+## 1 -0.3465676 -0.3287465 1.652247 2.558238 1.2064646 1.790445 -0.2984568
+## 2  1.0080940  0.6605370 1.516147 1.367252 0.8627425 1.059651 -1.3903719
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nba.m <-}\StringTok{ }\KeywordTok{melt}\NormalTok{(nba) }\CommentTok{##寬轉長}
+\KeywordTok{ggplot}\NormalTok{(nba.m, }\KeywordTok{aes}\NormalTok{(variable, Name)) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_tile}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ value),}\DataTypeTok{colour =} \StringTok{"white"}\NormalTok{)}\OperatorTok{+}\StringTok{ }\CommentTok{#geom_tile: 區塊著色}
+\StringTok{    }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{low =} \StringTok{"white"}\NormalTok{,}\DataTypeTok{high =} \StringTok{"steelblue"}\NormalTok{) }\CommentTok{#數值低：白色}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/unnamed-chunk-45-1.pdf}
+
+以上範例之參考資料為\href{http://flowingdata.com/2010/01/21/how-to-make-a-heatmap-a-quick-and-easy-solution/}{How to Make a Heatmap -- a Quick and Easy Solution}
+
+\hypertarget{treemap}{%
+\section{Treemap}\label{treemap}}
+
+Treemap(矩形式樹狀結構繪圖法)是以二維平面的方式展示包含階層結構（hierarchical）形式的統計資訊，在R中可以使用\texttt{treemapify}\citep{R-treemapify} packages
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{)}
+\KeywordTok{library}\NormalTok{(devtools)}
+\KeywordTok{install_github}\NormalTok{(}\StringTok{"wilkox/ggfittext"}\NormalTok{)}
+\KeywordTok{install_github}\NormalTok{(}\StringTok{"wilkox/treemapify"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(treemapify)}
+\end{Highlighting}
+\end{Shaded}
+
+以G20 Dataset為例，二十國集團（英語：Group of Twenty，縮寫：G20）是一個國際經濟合作論壇，於1999年12月16日在德國柏林成立，屬於布雷頓森林體系框架內非正式對話的一種機制，由七國集團（美國、英國、法國、德國、義大利、日本、加拿大），金磚五國（中國、印度、巴西、俄羅斯、南非），七個重要經濟體（澳大利亞、墨西哥、韓國、土耳其、印尼、沙烏地阿拉伯、阿根廷），以及歐盟組成。按照慣例，國際貨幣基金組織與世界銀行列席該組織的會議。二十國集團的GDP總量約佔全球GDP的85％，貿易佔全球貿易總額的80\%以上，人口約佔全球人口的2/3。（\href{https://en.wikipedia.org/wiki/G-20_major_economies}{維基百科}）
+
+G20 Dataset包含20個國家的資訊，資料欄位有：
+
+\begin{itemize}
+\tightlist
+\item
+  Region 國家所在區域
+\item
+  Country 國家名稱
+\item
+  Trade.mil.USD 總貿易額，以百萬為單位
+\item
+  Nom.GDP.mil.USD 名義國內生產總值，以百萬為單位
+\item
+  HDI 人類發展指數（\href{https://zh.wikipedia.org/zh-tw/\%E4\%BA\%BA\%E7\%B1\%BB\%E5\%8F\%91\%E5\%B1\%95\%E6\%8C\%87\%E6\%95\%B0}{維基百科}）
+\item
+  Population 人口數
+\item
+  Economic.classification 經濟狀況分類
+\end{itemize}
+
+首先將資料讀入，並用\texttt{str()}函式觀察資料型態
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(G20)}\CommentTok{#範例資料}
+\KeywordTok{str}\NormalTok{(G20)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':	20 obs. of  6 variables:
+##  $ region             : Factor w/ 8 levels "Africa","Asia",..: 1 6 6 6 8 8 2 2 2 2 ...
+##  $ country            : Factor w/ 20 levels "Argentina","Australia",..: 16 20 4 13 3 1 5 12 17 9 ...
+##  $ gdp_mil_usd        : int  384315 15684750 1819081 1177116 2395968 474954 8227037 5963969 1155872 1824832 ...
+##  $ hdi                : num  0.629 0.937 0.911 0.775 0.73 0.811 0.699 0.912 0.909 0.554 ...
+##  $ econ_classification: Factor w/ 2 levels "Advanced","Developing": 2 1 1 2 2 2 2 1 1 2 ...
+##  $ hemisphere         : Factor w/ 2 levels "Northern","Southern": 2 1 1 1 2 2 1 1 1 1 ...
+\end{verbatim}
+
+用搭配\texttt{ggplot()}函數，使用\texttt{geom\_treemap()}做圖
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(G20, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{area =}\NormalTok{ gdp_mil_usd, }\DataTypeTok{fill =}\NormalTok{ hdi)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_treemap}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/ggplotify1-1.pdf}
+
+看函式名稱不難了解\texttt{ggplotify()}也是基於\texttt{ggplot2}套件開發，所以可以使用ggplot2的圖形設定參數改變圖形樣式，由於數字越大顏色越深比較符合視覺化的常理，所以這邊使用\texttt{ggplot2}的\texttt{scale\_fill\_gradient()}函式指定數值高低所需的顏色
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(G20, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{area =}\NormalTok{ gdp_mil_usd, }\DataTypeTok{fill =}\NormalTok{ hdi, }\DataTypeTok{label =}\NormalTok{ country)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_treemap}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{low =} \StringTok{"white"}\NormalTok{,}\DataTypeTok{high =} \StringTok{"steelblue"}\NormalTok{) }\CommentTok{#指定高低顏色}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/ggplotify2-1.pdf}
+
+也可使用\texttt{geom\_treemap\_text()}加上文字標籤。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(G20, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{area =}\NormalTok{ gdp_mil_usd, }\DataTypeTok{fill =}\NormalTok{ hdi, }\DataTypeTok{label =}\NormalTok{ country)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_treemap}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{low =} \StringTok{"white"}\NormalTok{,}\DataTypeTok{high =} \StringTok{"steelblue"}\NormalTok{) }\CommentTok{#指定高低顏色+}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/ggplotify3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \KeywordTok{geom_treemap_text}\NormalTok{(}\DataTypeTok{fontface =} \StringTok{"italic"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{place =} \StringTok{"centre"}\NormalTok{,}
+                    \DataTypeTok{grow =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## geom_treemap_text: na.rm = FALSE, padding.x = 1, padding.y = 1, place = centre, min.size = 4, grow = TRUE, reflow = FALSE, fixed = NULL, layout = squarified, start = bottomleft
+## stat_identity: na.rm = FALSE
+## position_identity
+\end{verbatim}
+
+完整做圖程式碼如下：
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## install.packages("devtools") 第一次使用前需要安裝}
+\CommentTok{## library(devtools)}
+\CommentTok{## install_github("wilkox/treemapify") }
+\KeywordTok{library}\NormalTok{(treemapify)}
+\KeywordTok{data}\NormalTok{(G20)}\CommentTok{#載入範例資料}
+\KeywordTok{ggplot}\NormalTok{(G20, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{area =}\NormalTok{ gdp_mil_usd, }\DataTypeTok{fill =}\NormalTok{ hdi, }\DataTypeTok{label =}\NormalTok{ country)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_treemap}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{low =} \StringTok{"white"}\NormalTok{,}\DataTypeTok{high =} \StringTok{"steelblue"}\NormalTok{) }\CommentTok{#指定高低顏色+}
+  \KeywordTok{geom_treemap_text}\NormalTok{(}\DataTypeTok{fontface =} \StringTok{"italic"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{place =} \StringTok{"centre"}\NormalTok{,}
+                    \DataTypeTok{grow =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{treemap}\citep{R-treemap} package也提供相同的功能
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(treemap)}
+\KeywordTok{data}\NormalTok{(GNI2014)}
+\KeywordTok{treemap}\NormalTok{(GNI2014,}
+       \DataTypeTok{index=}\KeywordTok{c}\NormalTok{(}\StringTok{"continent"}\NormalTok{, }\StringTok{"iso3"}\NormalTok{), }\CommentTok{#分組依據}
+       \DataTypeTok{vSize=}\StringTok{"population"}\NormalTok{, }\CommentTok{#區塊大小}
+       \DataTypeTok{vColor=}\StringTok{"GNI"}\NormalTok{, }\CommentTok{#顏色深淺}
+       \DataTypeTok{type=}\StringTok{"value"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{DataAnalyticsWithR_files/figure-latex/treemap1-1.pdf}
+
+\href{https://github.com/wilkox/treemapify}{參考資料}
+
+\hypertarget{ux53c3ux8003ux6587ux4ef6ux8207ux8cc7ux6e90}{%
+\section{參考文件與資源}\label{ux53c3ux8003ux6587ux4ef6ux8207ux8cc7ux6e90}}
+
+\begin{itemize}
+\tightlist
+\item
+  官方網站\href{http://docs.ggplot2.org/current/}{文件}
+\item
+  RStudio製作的\href{https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf}{ggplot cheat sheet}
+\item
+  DataCamp互動式課程1 \href{https://www.datacamp.com/courses/data-visualization-with-ggplot2-1}{Data Visualization with ggplot2 (Part 1)}
+\item
+  DataCamp互動式課程2 \href{https://www.datacamp.com/courses/data-visualization-with-ggplot2-2}{Data Visualization with ggplot2 (Part 2)}
+\item
+  DataCamp互動式課程3 \href{https://www.datacamp.com/courses/data-visualization-with-ggplot2-3}{Data Visualization with ggplot2 (Part 3)}
+\end{itemize}
+
+\hypertarget{InteractiveGraphics}{%
+\chapter{互動式資料呈現}\label{InteractiveGraphics}}
+
+Placeholder
+
+\hypertarget{ggvis}{%
+\section{ggvis}\label{ggvis}}
+
+\hypertarget{plot.ly}{%
+\section{Plot.ly}\label{plot.ly}}
+
+\hypertarget{shinyux7c21ux4ecb}{%
+\section{Shiny簡介}\label{shinyux7c21ux4ecb}}
+
+\hypertarget{datamining}{%
+\chapter{資料探勘}\label{datamining}}
+
+Placeholder
+
+\hypertarget{ux4ec0ux9ebcux662fux8cc7ux6599ux63a2ux52d8}{%
+\section{什麼是資料探勘}\label{ux4ec0ux9ebcux662fux8cc7ux6599ux63a2ux52d8}}
+
+\hypertarget{regression-ux8ff4ux6b78}{%
+\section{Regression 迴歸}\label{regression-ux8ff4ux6b78}}
+
+\hypertarget{linear-regression-ux7ddaux6027ux8ff4ux6b78}{%
+\subsection{Linear Regression 線性迴歸}\label{linear-regression-ux7ddaux6027ux8ff4ux6b78}}
+
+\hypertarget{logistic-regression-ux7f85ux5409ux65afux8ff4ux6b78}{%
+\subsection{Logistic Regression 羅吉斯迴歸}\label{logistic-regression-ux7f85ux5409ux65afux8ff4ux6b78}}
+
+\hypertarget{ux6700ux4f73ux6a21ux578bux7be9ux9078}{%
+\subsection{最佳模型篩選}\label{ux6700ux4f73ux6a21ux578bux7be9ux9078}}
+
+\hypertarget{decision-trees-ux6c7aux7b56ux6a39}{%
+\section{Decision Trees 決策樹}\label{decision-trees-ux6c7aux7b56ux6a39}}
+
+\hypertarget{clustering-ux5206ux7fa4}{%
+\section{Clustering 分群}\label{clustering-ux5206ux7fa4}}
+
+\hypertarget{hierarchical-clustering-ux968eux5c64ux5f0fux5206ux7fa4}{%
+\subsection{Hierarchical clustering 階層式分群}\label{hierarchical-clustering-ux968eux5c64ux5f0fux5206ux7fa4}}
+
+\hypertarget{k-means-clustering}{%
+\subsection{K-means clustering}\label{k-means-clustering}}
+
+\hypertarget{association-rules-ux95dcux806fux5f0fux898fux5247}{%
+\section{Association Rules 關聯式規則}\label{association-rules-ux95dcux806fux5f0fux898fux5247}}
+
+\hypertarget{open-source-packages}{%
+\section{Open Source Packages}\label{open-source-packages}}
+
+\hypertarget{prophet}{%
+\subsection{Prophet}\label{prophet}}
+
+\hypertarget{tensorflow}{%
+\subsection{TensorFlow}\label{tensorflow}}
+
+\hypertarget{mxnet}{%
+\subsection{MXNet}\label{mxnet}}
+
+\hypertarget{ux6a21ux578bux9a57ux8b49}{%
+\section{模型驗證}\label{ux6a21ux578bux9a57ux8b49}}
+
+\hypertarget{regression-ux8ff4ux6b78ux9a57ux8b49}{%
+\subsection{Regression 迴歸驗證}\label{regression-ux8ff4ux6b78ux9a57ux8b49}}
+
+\hypertarget{logistic-regression-ux908fux8f2fux8ff4ux6b78ux9a57ux8b49}{%
+\subsection{Logistic Regression 邏輯迴歸驗證}\label{logistic-regression-ux908fux8f2fux8ff4ux6b78ux9a57ux8b49}}
+
+\hypertarget{decision-trees-ux6c7aux7b56ux6a39ux9a57ux8b49}{%
+\subsection{Decision Trees 決策樹驗證}\label{decision-trees-ux6c7aux7b56ux6a39ux9a57ux8b49}}
+
+\hypertarget{case-study}{%
+\section{Case Study}\label{case-study}}
+
+\hypertarget{ux53c3ux8003ux8cc7ux6599}{%
+\section{參考資料}\label{ux53c3ux8003ux8cc7ux6599}}
+
+\hypertarget{big}{%
+\chapter{從小數據到大數據分析}\label{big}}
+
+Placeholder
+
+\hypertarget{r-hadoop}{%
+\section{R + Hadoop}\label{r-hadoop}}
+
+\hypertarget{rhadoopux5b89ux88ddux6e2cux8a66ux6d41ux7a0b-cloudera}{%
+\section{RHadoop安裝測試流程 (Cloudera)}\label{rhadoopux5b89ux88ddux6e2cux8a66ux6d41ux7a0b-cloudera}}
+
+\hypertarget{ux7cfbux7d71ux8edfux9ad4ux7248ux672cux8cc7ux8a0a}{%
+\subsection{系統/軟體版本資訊}\label{ux7cfbux7d71ux8edfux9ad4ux7248ux672cux8cc7ux8a0a}}
+
+\hypertarget{ux53c3ux8003ux8cc7ux6599}{%
+\subsection{參考資料}\label{ux53c3ux8003ux8cc7ux6599}}
+
+\hypertarget{ux5b89ux88ddux6b65ux9a5f}{%
+\subsection{安裝步驟}\label{ux5b89ux88ddux6b65ux9a5f}}
+
+\hypertarget{cloudera-cdh-quickstart-vm}{%
+\subsubsection{Cloudera CDH QuickStart VM}\label{cloudera-cdh-quickstart-vm}}
+
+\hypertarget{ux5b89ux88ddr}{%
+\subsubsection{安裝R}\label{ux5b89ux88ddr}}
+
+\hypertarget{ux5b89ux88ddrhadoop-1-ux5148ux9032ux884cux74b0ux5883ux8a2dux5b9a}{%
+\subsubsection{安裝RHadoop-1 先進行環境設定}\label{ux5b89ux88ddrhadoop-1-ux5148ux9032ux884cux74b0ux5883ux8a2dux5b9a}}
+
+\hypertarget{ux5b89ux88ddrhadoop-2-rmr2}{%
+\subsubsection{安裝RHadoop-2 rmr2}\label{ux5b89ux88ddrhadoop-2-rmr2}}
+
+\hypertarget{ux5b89ux88ddrhadoop-3-rhdfs}{%
+\subsubsection{安裝RHadoop-3 rhdfs}\label{ux5b89ux88ddrhadoop-3-rhdfs}}
+
+\hypertarget{ux6e2cux8a66ux524dux5148ux89e3ux6c7aux6b0aux9650ux554fux984c}{%
+\subsection{測試前，先解決權限問題}\label{ux6e2cux8a66ux524dux5148ux89e3ux6c7aux6b0aux9650ux554fux984c}}
+
+\hypertarget{ux6e2cux8a66}{%
+\subsection{測試}\label{ux6e2cux8a66}}
+
+\hypertarget{ux5b89ux88ddrstudio-server}{%
+\subsection{安裝RStudio Server}\label{ux5b89ux88ddrstudio-server}}
+
+\hypertarget{rhadoop-mapreduce-easy-word-count}{%
+\section{RHadoop MapReduce: easy word count}\label{rhadoop-mapreduce-easy-word-count}}
+
+\hypertarget{r-spark}{%
+\section{R + Spark}\label{r-spark}}
+
+\hypertarget{install}{%
+\chapter{軟體安裝介紹}\label{install}}
+
+Placeholder
+
+\hypertarget{rux5b89ux88dd}{%
+\section{R安裝}\label{rux5b89ux88dd}}
+
+\hypertarget{rstudioux5b89ux88dd}{%
+\section{RStudio安裝}\label{rstudioux5b89ux88dd}}
+
+\hypertarget{rstudioux4f7fux7528ux7c21ux4ecb}{%
+\section{RStudio使用簡介}\label{rstudioux4f7fux7528ux7c21ux4ecb}}
+
+\hypertarget{ux5c08ux6848}{%
+\subsection{專案}\label{ux5c08ux6848}}
+
+\hypertarget{rstudioux4ecbux9762}{%
+\subsection{RStudio介面}\label{rstudioux4ecbux9762}}
+
+\hypertarget{video}{%
+\chapter{教學影片資訊}\label{video}}
+
+\hypertarget{ux6559ux5b78ux5f71ux7247ux983bux9053ux9023ux7d50}{%
+\section{教學影片頻道連結}\label{ux6559ux5b78ux5f71ux7247ux983bux9053ux9023ux7d50}}
+
+\href{https://www.youtube.com/channel/UC2ZZMRLibtq2fD-la4YV_nA/}{資料科學與R語言 YouTube頻道}
+
+\hypertarget{ux5b8cux6574ux7248ux64adux653eux6e05ux55ae}{%
+\section{完整版播放清單}\label{ux5b8cux6574ux7248ux64adux653eux6e05ux55ae}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOxTQiku-l0CkYZdL3uidOUC}{R 101 \& GitHub 101 - {[}資料科學與R語言{]}}
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOwUra70JV-zBaSJc8p9Nlnu}{資料結構 - {[}資料科學與R語言{]}}
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOwII8wk-t6_m4aee9wMg3-6}{控制流程 - {[}資料科學與R語言{]}}
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOzlr_NL7_D--OvmR5ppvaZv}{資料讀取與匯出 - {[}資料科學與R語言{]}}
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOxE3b_zXjA1EX8Job0i6F5S}{資料處理與清洗 - {[}資料科學與R語言{]}}
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOzT7OvpzAXAHwPVnGtZhQD0}{探索式資料分析 - {[}資料科學與R語言{]}}
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOxiRwgXZcxwUP7BKM-WVUV4}{資料視覺化 - {[}資料科學與R語言{]}}
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOyxEedw_cMea3TBHguWRhmi}{資料探勘 - {[}資料科學與R語言{]}}
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOwyavHjFwah57y2ThJ7Lxzr}{R Function and Package {[}資料科學與R語言{]}}
+\end{enumerate}
+
+\hypertarget{ux901fux6210ux7248ux64adux653eux6e05ux55ae}{%
+\section{速成版播放清單}\label{ux901fux6210ux7248ux64adux653eux6e05ux55ae}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOyNlKv41DdqYrxOlfLr7Ku7}{R101與條件判斷 {[}R資料科學速成{]}}
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOzST2pUcH2emqOj0sUaKXnp}{資料結構 {[}R資料科學速成{]}}
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOzUhXV4ODHb9UYtJ2GFXqMQ}{資料匯入與匯出 {[}R資料科學速成{]}}\\
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOx08FhoUn3WodJzqPLTVIlG}{資料處理與清洗 {[}R資料科學速成{]}}\\
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOwsn-MLpXKPjTAhnPghpsB5}{資料結合 {[}R資料科學速成{]}}\\
+\item
+  \href{https://www.youtube.com/playlist?list=PLsKtsWy-7jOyPb7JgaR3dVlVzJCUMlCCU}{探索式資料分析 {[}R資料科學速成{]}}
+\end{enumerate}
+
+\hypertarget{author}{%
+\chapter*{作者資訊}\label{author}}
+\addcontentsline{toc}{chapter}{作者資訊}
+
+曾意儒 Yi-Ju Tseng
+
+\href{http://im.cgu.edu.tw/bin/home.php}{長庚大學 資訊管理學系} 副教授
+
+\href{https://yjtseng.info/}{個人網站}
+
+Lab: \href{https://dhlab-tseng.github.io/}{數位健康實驗室}
+
+歡迎提供\href{https://goo.gl/forms/5Htobvwy2vsB7yiF3}{建議與回饋}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}

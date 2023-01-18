@@ -1,0 +1,10 @@
+base
+SportsAnalytics
+bitops
+RCurl
+bit
+bit64
+lubridate
+stringr
+reshape2
+jsonlite

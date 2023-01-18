@@ -1,0 +1,51 @@
+Package: DataAnalyticsWithRBook
+Title: Data Analytics With R
+Version: 0.9
+Authors@R: c(
+  person("Yi-Ju", "Tseng", , "yjtseng@mail.cgu.edu.tw", c("aut", "cre"))
+  )
+Depends: R (>= 3.5.0)
+URL: https://github.com/yijutseng/DataAnalyticsWithRBook
+Imports:
+  ggplot2,
+  dplyr,
+  lubridate,
+  bit64,
+  knitr,
+  rmarkdown,
+  bookdown,
+  RCurl,
+  data.table,
+  stringr,
+  reshape2,
+  SportsAnalytics,
+  readr,
+  readxl,
+  jsonlite,
+  RCurl,
+  XML,
+  Rfacebook,
+  rvest,
+  rgdal,
+  rgeos,
+  maptools,
+  ggmap,
+  choroplethr,
+  choroplethrMaps,
+  WDI,
+  treemapify,
+  shiny,
+  plotly,
+  ggvis,
+  googleVis,
+  rpart,
+  rpart.plot,
+  fields,
+  arules,
+  datasets,
+  arulesViz,
+  MASS,
+  caret,
+  purrr,
+  treemap
+
